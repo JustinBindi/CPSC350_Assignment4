@@ -7,83 +7,105 @@ template <class T>
 class GenQueue
 {
   public:
-    GenQueue(); //default
-    GenQueue(int maxSize); //overloaded constructor
-    ~GenQueue(); //destructor
+    GenQueue();
+    GenQueue(int maxSize);
 
-    void insert (T d); //aka enqueue
-    T remove(); //aka dequeue()
-    T front(); //tells who is at the front of the outline, aka peek()
+    void insert (T d);
+    T remove();
+    T front();
 
     int getSize();
     bool isFull();
     bool isEmpty();
 
-    int head; //should be private
-    int tail; //
+    int head;
+    int tail;
     int numElements;
     int mSize;
 
-    char *myQueue;
+    T *myQueue;
 };
 
 class Student
 {
   public:
-    Student(); //default
-    Student(int number, int windowTime, int arrTime); //overloaded constructor
-    ~Student(); //destructor
+    Student();
+    Student(int number);
 
-    void printSInfo();//(Student student);
+    void printSInfo();
     void setStudentID(int studentID);
     void setStudentWindowTime(int neededWTime);
-    void setStudentATime(int arrivalTime);
+    void setStudentArrTime(int arrivalTime);
     void setStudentWaitTime(int waitTime);
     void setStudentatWindow(bool atWindow);
+    void setStudentTimeAtWindow(int timeAtWindow);
+    void setStudentDone(bool studentDone);
     int getStudentID();
     int getStudentWindowTime();
-    int getStudentATime();
+    int getStudentArrTime();
     int getStudentWaitTime();
     bool getStudentatWindow();
-
-    //void newStudent();
+    int getStudentTimeAtWindow();
+    bool getStudentDone();
 
     int waitTime;
     int neededWTime;
     bool atWindow;
     int studentID;
     int arrivalTime;
-    //vector<Student> studentVector;
+    int timeAtWindow;
+    bool studentDone;
 };
 
 class Window
 {
   public:
-    Window(); //default
-    Window(int idleTime); //overloaded constructor
-    ~Window(); //destructor
+    Window();
+    Window(int idleTime);
 
-    void printWInfo();//(Window window);
+    void printWInfo();
     void setWindowIdleTime(int idleTime);
     void setWindowStudentHere(bool studentHere);
+    void setWindowOpen(bool open);
+    void setWindowWhichStudentHere(int whichStudent);
     int getWindowIdleTime();
     bool getWindowStudentHere();
+    bool getWindowOpen();
+    int getWindowWhichStudentHere();
 
     int idleTime;
     bool studentHere;
-
+    bool open;
+    int whichStudent;
 };
 
 class Simulation
 {
   public:
     Simulation();
-    Simulation(int something);
-    ~Simulation();
+    Simulation(bool loopCondition);
 
-    void Run();
+    void Run(string fileName);
 
     bool loop;
-    //vector<Student> studentVector;
-    //vector<Window> windowVector;
+    int clock;
+    string line;
+    int deleter;
+    int studentCounter;
+    int doneCounter;
+    int waitMean;
+    int idleMean;
+    int median;
+    int longestSWaitTime;
+    int longestWIdleTime;
+    int numberWaitOver10;
+    int numberWaitOver5;
+    int meanSCounter;
+    int meanWCounter;
+    vector<int> fileRead;
+    vector<Window> windowVector;
+    vector<Student> studentVector;
+    vector<int> waitTimesVector;
+    vector<int> idleTimesVector;
+    vector<Student> doneStudents;
 };
